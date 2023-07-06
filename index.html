@@ -8,19 +8,39 @@
   <body>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
-    <div id="app">
-    </div>
+    <div id="app"></div>
 
+
+    <!-- 
+      Challenge
+      Programa un contador que permita hacer incremento y decremento con dos botones y mostrar el total.
+     -->
     <script>
       const vm = Vue.createApp({
         data() {
           return {
-            attr: 'src',
-            img: "https://images.pexels.com/photos/17183272/pexels-photo-17183272/free-photo-of-world-trade-center-transportation-hub-in-new-york-city.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            img_alt: 'A nice place'
+            evt: 'submit',
+            counter: 0
           };
         },
-        template: `<img v-bind:[attr]="img" v-bind:alt="img_alt" />`
+        methods: {
+          submit() {
+            console.log('A submit')
+          },
+          increment(){
+            this.counter++
+            console.log('INCREMENT!')
+          },
+          decrement() {
+            this.counter--;
+            console.log('DECREMENT!')
+          },
+          resetCounter() {
+            this.counter = 0;
+            console.log('RESETED!')
+          }
+        },
+        template: ` <button v-on:click='increment'>+</button> <button v-on:click="decrement">-</button> <button v-on:click="resetCounter"> RESET! </button> <p>{{counter}}</p>`,
       }).mount("#app");
     </script>
   </body>
